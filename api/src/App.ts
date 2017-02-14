@@ -3,6 +3,9 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import HeroRouter from './routes/HeroRouter';
+import Mongodb from './db/db';
+
+
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -15,6 +18,7 @@ class App {
     this.express = express();
     this.middleware();
     this.routes();
+    this.db();
   }
 
   // Configure Express middleware.
@@ -31,13 +35,12 @@ class App {
      * API endpoints */
     let router = express.Router();
     // placeholder route handler
-    router.get('/', (req, res, next) => {
-      res.json({
-        message: 'Hello World!'
-      });
-    });
     this.express.use('/', router);
     this.express.use('/api/v1/heroes', HeroRouter);
+  }
+  private db(): void{
+    let db = new Mongodb('localhost:27017/bookstore')
+    db.connect();
   }
 
 }

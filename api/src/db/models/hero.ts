@@ -1,5 +1,6 @@
 import * as mongoose from "mongoose";
 
+mongoose.Promise = global.Promise;
 
 interface IHero {
     id: number,
@@ -8,7 +9,7 @@ interface IHero {
     occupation?: string,
     gender?: string,
     height?: {
-        ft?: number
+        ft?: number,
         in?: number
     },
     hair: string,
@@ -25,7 +26,7 @@ const heroSchema = new mongoose.Schema({
     occupation: String,
     gender: String,
     height: {
-        ft: Number
+        ft: Number,
         in: Number
     },
     hair: String,
@@ -35,4 +36,4 @@ const heroSchema = new mongoose.Schema({
 
 const Hero = mongoose.model<IHeroModel>("Hero", heroSchema);
 
-export Hero;
+export default Hero;

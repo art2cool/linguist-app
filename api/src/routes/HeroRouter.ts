@@ -20,7 +20,7 @@ export class HeroRouter {
   init() {
     this.router.get('/', HeroController.getAll);
     this.router.get('/:id', HeroController.getOne);
-    this.router.delete('/', HeroController.removeOne); 
+    this.router.post('/', HeroController.createHero);
   }
 
 }
