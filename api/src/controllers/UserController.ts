@@ -1,14 +1,12 @@
 import {Request, Response, NextFunction} from 'express';
-const Heroes = require('./../../data.json');
-import Hero from '../db/models/hero';
+import User from '../db/models/user';
 
-export class HeroController {
-
+export class UserController {
   /**
-   * GET all Heroes.
+   * GET all Users.
    */
   public getAll(req: Request, res: Response) {
-    Hero
+    User
       .find({})
       .then( heroes => {
         res.send(heroes);
@@ -22,7 +20,7 @@ export class HeroController {
    */
   public getOne(req: Request, res: Response) {
     let id = req.params.id;
-    Hero
+    User
       .findById(id)
       .then( hero => {
         res.send(hero);
@@ -32,12 +30,12 @@ export class HeroController {
       })
   }
   /**
-  * CREATE hero
+  * CREATE user
   */
-  public createHero(req: Request, res:Response) {
-    let newHero = req.body.data;
-      Hero
-        .create(newHero)
+  public createUser(req: Request, res:Response) {
+    let newUser = req.body.data;
+      User
+        .create(newUser)
         .then( hero => {
           res.send(hero);
         })
@@ -46,6 +44,6 @@ export class HeroController {
         })
   }
 }
-const heroController = new HeroController();
+const userController = new UserController();
 
-export default heroController
+export default userController

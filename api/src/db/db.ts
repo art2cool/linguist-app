@@ -3,7 +3,8 @@
 import * as mongoose from 'mongoose';
 
 class MongoDb {
-  constructor(connectionString) {
+  _connectionString: string;
+  constructor(connectionString: string) {
     this._connectionString = connectionString;
   }
 
