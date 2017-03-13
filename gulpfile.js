@@ -6,7 +6,7 @@ const tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('scripts', () => {
   const tsResult = tsProject.src()
-  .pipe(tsProject());
+  .pipe(tsProject(ts.reporter.fullReporter()));
   return tsResult.js.pipe(gulp.dest('api/dist'));
 });
 
