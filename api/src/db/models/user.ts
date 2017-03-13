@@ -1,18 +1,7 @@
 import * as mongoose from "mongoose";
+import IUserDocument from "../../interfaces/IUserDocument";
 
 mongoose.Promise = global.Promise;
-
-interface IUser{
-    id: number,
-    name?: string,
-    email: string,
-    password: string,
-    gender?: string,
-    hair: string,
-    eyes: string,
-}
-
-interface IUserModel extends IUser, mongoose.Document{};
 
 const userSchema = new mongoose.Schema({
     name: {type: String, trim: true},
@@ -23,6 +12,6 @@ const userSchema = new mongoose.Schema({
     eyes: String
 });
 
-const User = mongoose.model<IUserModel>("User", userSchema);
+const User = mongoose.model<IUserDocument>("User", userSchema);
 
 export default User;

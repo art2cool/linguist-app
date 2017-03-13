@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon api/dist/index.js",
     "watch": "node_modules/.bin/tsc",
-    "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
+    "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts",
+    "debug": "node-debug --debug-port=7889 api/dist/index.js" 
   },
   "author": "Volodymyr Paskiv",
   "license": "ISC",
