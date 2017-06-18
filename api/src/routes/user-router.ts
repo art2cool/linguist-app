@@ -1,9 +1,8 @@
 import {Router} from 'express';
 import UserController from '../controllers/UserController';
 
-export class UserRouter {
+export default class UserRouter {
   router: Router
-
   /**
    * Initialize the UserRouter
    */
@@ -18,15 +17,8 @@ export class UserRouter {
   init() {
     this.router
             .get('/', UserController.getAll)
-            .post('/', UserController.createUser);
-    this.router
+            .post('/', UserController.createUser)
             .get('/:id', UserController.getOne);
   }
 
 }
-
-// Create the UserRouter, and export its configured Express.Router
-const userRoutes = new UserRouter();
-userRoutes.init();
-
-export default userRoutes.router;
