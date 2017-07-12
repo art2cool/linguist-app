@@ -1,11 +1,11 @@
 import axios from 'axios';
-import * as UserActions from '../actions/UserActions';
+import * as UserActions from '../actions/user-actions';
 
 const Api = axios.create();
 
 const server = {
     url: location.hostname,
-    port: location.hostname === 'localhost' ? 8080 : 8082
+    port: 3000
 };
 
 Api.defaults.baseURL = `${location.protocol}//${server.url}:${server.port}/`;

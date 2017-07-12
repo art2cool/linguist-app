@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const ts = require('gulp-typescript');
+const nodemon = require('gulp-nodemon');
 
 // pull in the project TypeScript config
 const tsProject = ts.createProject('tsconfig.json');
@@ -14,4 +15,16 @@ gulp.task('watch', ['scripts'], () => {
   gulp.watch('api/src/**/*.ts', ['scripts']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('serve', function () {
+    nodemon({
+        script: './api/dist/index.js',
+        ignore: ['client/','node_modules/', 'typings/','api/dist/']
+    })
+    .on('restart', function () {
+        console.log('restarted!');
+    });
+
+});
+
+
+gulp.task('default', ['watch', 'serve']);

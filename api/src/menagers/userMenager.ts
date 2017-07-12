@@ -15,6 +15,12 @@ class UserMenager {
     return User.findById(id)
   }
   /**
+   * GET one user by query
+   */
+  public getOneUserByQuery(query: any): Promise<string> {
+    return User.findOne(query)
+  }
+  /**
   * CREATE user
   */
   public createUser(newUser: IUserDocument): Promise<string> {

@@ -23,16 +23,17 @@ export default class SignIn extends React.Component {
 
   handleSubmitForm(e){
     e.preventDefault()
-    console.log('submit')
+    console.log(this.state)
     this.setState({isLoading: true})
-    console.log(this.props.actions)
+    this.props.signIn(this.state)
+
   }
 
   render() {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-4 col-md-offset-5">
+          <div className="col-md-4 col-md-offset-4">
           <h2>Sing-In</h2>
 
             <form onSubmit={this.handleSubmitForm.bind(this)}>

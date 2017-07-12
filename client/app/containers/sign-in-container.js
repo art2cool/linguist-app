@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import App from '../components/sing-in';
+import App from '../components/app';
 import * as UserActions from '../actions/user-actions';
 
 function mapStateToProps (state) {
     return {
-        user: state.user.userData
+        user: state.user
     }
 }
 function mapDispatchToProps (dispatch) {
     return {
-        actions: bindActionCreators(UserActions, dispatch)
+        signIn: bindActionCreators(UserActions.signIn, dispatch),
+        logout: bindActionCreators(UserActions.logout, dispatch)
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps);

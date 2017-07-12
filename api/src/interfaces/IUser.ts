@@ -1,11 +1,8 @@
 interface IUser{
-    id: number,
+    id?: number,
     name?: string,
     email: string,
-    password: string,
-    gender?: string,
-    hair: string,
-    eyes: string,
+    password: string
 }
 
 export default IUser;
