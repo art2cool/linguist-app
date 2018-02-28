@@ -1,5 +1,3 @@
-"use scripts";
-
 import * as http from 'http';
 import * as debug from 'debug';
 

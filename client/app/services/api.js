@@ -12,29 +12,27 @@ Api.defaults.baseURL = `${location.protocol}//${server.url}:${server.port}/`;
 
 Api.interceptors.request.use((config) => {
     // Do something before request is sent
-    const localData = JSON.parse(localStorage.getItem('Ling'));
-    if(localData && localData.token) {
-      config.headers.authorization = 'Barear ' + localData.token;
+    const token = localStorage.getItem('_ling');
+    console.log(token);
+    if (token) {
+      config.headers.authorization = 'Barear ' + JSON.parse(token);
     }
     return config;
   }, (error) => {
     // Do something with request error
-    return Promise.reject(error);
+    console.log(error);
   });
-// Add a response interceptor
-Api.interceptors.response.use((response) => {
+  // Add a response interceptor
+  Api.interceptors.response.use((response) => {
     // Do something with response data
-    let token = response.headers.authorization;
-    const localData = JSON.parse(localStorage.getItem('Ling'));
-    if(token && localData && localData.token) {
-      localData.token = token.split(' ')[1];
-      localStorage.setItem('Ling', JSON.stringify(localData));
+    const token = response.headers.authorization.split(' ')[1];
+    if(token) {
+      localStorage.setItem('_ling', JSON.stringify(token));
     }
     return response;
   }, (error) => {
     if(error.response.status === 401) {
-      localStorage.removeItem('Ling');
-      // TODO make it polyudsky
+      localStorage.removeItem('_ling');
       location = '/';
     }
     // Do something with response error

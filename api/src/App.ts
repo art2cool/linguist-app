@@ -42,11 +42,11 @@ class App {
   private corsHeaders(req, res, next): void {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, authorization');
     res.header('Access-Control-Expose-Headers', 'authorization');
     res.header('Access-Control-Allow-Credentials', true);
     next();
-  }  
+  }
 
 }
 

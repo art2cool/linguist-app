@@ -16,13 +16,15 @@ gulp.task('watch', ['scripts'], () => {
 });
 
 gulp.task('serve', function () {
-    nodemon({
-        script: './api/dist/index.js',
-        ignore: ['client/','node_modules/', 'typings/','api/dist/']
-    })
-    .on('restart', function () {
-        console.log('restarted!');
-    });
+    setTimeout(() => {
+        nodemon({
+            script: './api/dist/index.js',
+            ignore: ['client/','node_modules/', 'typings/']
+        })
+        .on('restart', function () {
+            console.log('restarted!');
+        });
+    }, 2000)
 
 });
 

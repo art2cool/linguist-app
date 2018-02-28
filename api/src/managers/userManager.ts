@@ -1,7 +1,7 @@
 import User from '../db/models/user';
 import IUserDocument from "../interfaces/IUserDocument";
 
-class UserMenager {
+class UserManager {
   /**
    * GET all Users.
    */
@@ -11,7 +11,7 @@ class UserMenager {
   /**
    * GET one user by id
    */
-  public getOneUser(id: number): Promise<string> {
+  public getOneUser(id: any): Promise<any> {
     return User.findById(id)
   }
   /**
@@ -33,6 +33,6 @@ class UserMenager {
     return User.findOneAndUpdate(userData)
   }
 }
-const userMenager = new UserMenager();
+const userManager = new UserManager();
 
-export default userMenager
+export default userManager

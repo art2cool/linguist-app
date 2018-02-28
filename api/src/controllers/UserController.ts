@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction} from 'express';
 
-import User from '../menagers/userMenager';
+import User from '../managers/userManager';
 
 export class UserController {
   /**

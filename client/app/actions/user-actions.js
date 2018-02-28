@@ -12,21 +12,23 @@ export function signIn(payload) {
   return (dispatch) => {
 
     UserService.signIn(payload)
-      .then(responce => {
-          if (responce.status === 202) {
+      .then(response => {
+        console.log('response')
+        console.log(response)
+          if (response.status === 200) {
             dispatch({
               type: "LOGIN_SUCCESS",
               payload: {
-                user: response.data.user,
-                token: response.data.token
+                user: response.data.data.user,
+                token: response.data.data.token
               }
             });
 
             dispatch({
-              type: ROUTING,
+              type: 'ROUTING',
               payload: {
                 method: 'replace',
-                nextUrl: '/home'
+                nextUrl: '/'
               }
             });
           }
@@ -35,9 +37,9 @@ export function signIn(payload) {
         dispatch({
           type: "LOGIN_FAIL",
           payload: {
-            error: error.response.data
+            error: error.response.data.err
           }
         })
       })
   }
-} 
+}
