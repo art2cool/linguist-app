@@ -2,18 +2,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import App from '../components/app';
-import * as UserActions from '../actions/user-actions';
+import * as StudentsActions from '../actions/students-actions';
 
 function mapStateToProps (state) {
     return {
-        user: state.user,
+        students: state.students,
         error: state.error
     }
 }
 function mapDispatchToProps (dispatch) {
     return {
-        signIn: bindActionCreators(UserActions.signIn, dispatch),
-        logout: bindActionCreators(UserActions.logout, dispatch)
+        getStudents: bindActionCreators(StudentsActions.getStudents, dispatch)
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps);
